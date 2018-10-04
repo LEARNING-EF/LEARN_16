@@ -18,7 +18,7 @@
 					new Country()
 					{
 						Name =
-							string.Format("Country ({0})", countryIndex),
+							$"Country ({ countryIndex })",
 					};
 
 				// Note
@@ -31,8 +31,7 @@
 						new State()
 						{
 							Name =
-								string.Format("Country ({0}) - State ({1})",
-								countryIndex, stateIndex),
+								$"Country ({ countryIndex }) - State ({ stateIndex })",
 						};
 
 					country.States.Add(state);
