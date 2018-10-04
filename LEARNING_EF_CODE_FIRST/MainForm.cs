@@ -58,6 +58,15 @@ namespace LEARNING_EF_CODE_FIRST
 
 		private void CountriesListBox_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
+			//Models.Country selectedCountry =
+			//	(Models.Country)countriesListBox.SelectedItem; // این احمقانه‌ترین روش کست می‌باشد
+
+			//if(countriesListBox.SelectedItem is Models.Country)
+			//{
+			//	Models.Country selectedCountry =
+			//		(Models.Country)countriesListBox.SelectedItem;
+			//}
+
 			Models.Country selectedCountry =
 				countriesListBox.SelectedItem as Models.Country;
 
