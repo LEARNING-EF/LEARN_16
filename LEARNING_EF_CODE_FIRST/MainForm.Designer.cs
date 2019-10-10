@@ -11,12 +11,6 @@
 				components.Dispose();
 			}
 
-			if (databaseContext != null)
-			{
-				databaseContext.Dispose();
-				databaseContext = null;
-			}
-
 			base.Dispose(disposing);
 		}
 

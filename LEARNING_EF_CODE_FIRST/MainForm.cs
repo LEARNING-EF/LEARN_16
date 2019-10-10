@@ -10,41 +10,25 @@ namespace LEARNING_EF_CODE_FIRST
 		}
 
 		// **********
-		// **********
-		// **********
-		private Models.DatabaseContext databaseContext;
-		// **********
-
-		// **********
-		protected virtual Models.DatabaseContext DatabaseContext
-		{
-			get
-			{
-				if (databaseContext == null)
-				{
-					databaseContext =
-						new Models.DatabaseContext();
-				}
-
-				return databaseContext;
-			}
-		}
-		// **********
-		// **********
+		private Models.DatabaseContext MyDatabaseContext { get; set; }
 		// **********
 
 		private void MainForm_Load(object sender, System.EventArgs e)
 		{
 			try
 			{
+				MyDatabaseContext =
+					new Models.DatabaseContext();
+
 				var countries =
-					DatabaseContext.Countries
+					MyDatabaseContext.Countries
 					.OrderBy(current => current.Name)
 					.ToList()
 					;
 
-				countriesListBox.ValueMember = "Id";
-				countriesListBox.DisplayMember = "Name";
+				countriesListBox.ValueMember = nameof(Models.Country.Id);
+				countriesListBox.DisplayMember = nameof(Models.Country.Name);
+
 				countriesListBox.DataSource = countries;
 			}
 			catch (System.Exception ex)
@@ -58,8 +42,9 @@ namespace LEARNING_EF_CODE_FIRST
 
 		private void CountriesListBox_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
+			// این احمقانه‌ترین روش کست می‌باشد
 			//Models.Country selectedCountry =
-			//	(Models.Country)countriesListBox.SelectedItem; // این احمقانه‌ترین روش کست می‌باشد
+			//	(Models.Country)countriesListBox.SelectedItem;
 
 			//if(countriesListBox.SelectedItem is Models.Country)
 			//{
@@ -74,8 +59,9 @@ namespace LEARNING_EF_CODE_FIRST
 			{
 				statesListBox.DataSource = null;
 
-				statesListBox.ValueMember = "Id";
-				statesListBox.DisplayMember = "Name";
+				statesListBox.ValueMember = nameof(Models.State.Id);
+				statesListBox.DisplayMember = nameof(Models.State.Name);
+
 				statesListBox.DataSource = selectedCountry.States;
 			}
 		}
@@ -83,10 +69,10 @@ namespace LEARNING_EF_CODE_FIRST
 		private void MainForm_FormClosing
 			(object sender, System.Windows.Forms.FormClosingEventArgs e)
 		{
-			if (databaseContext != null)
+			if (MyDatabaseContext != null)
 			{
-				databaseContext.Dispose();
-				databaseContext = null;
+				MyDatabaseContext.Dispose();
+				//MyDatabaseContext = null;
 			}
 		}
 	}
