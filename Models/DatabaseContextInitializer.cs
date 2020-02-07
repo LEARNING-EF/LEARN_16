@@ -9,25 +9,22 @@
 
 		protected override void Seed(DatabaseContext databaseContext)
 		{
-			State state = null;
-			Country country = null;
-
 			for (int countryIndex = 1; countryIndex <= 5; countryIndex++)
 			{
-				country =
+				Country country =
 					new Country()
 					{
 						Name =
 							$"Country ({ countryIndex })",
 					};
 
-				// Note
+				// بسیار مهم است. توجه کنید
 				country.States =
 					new System.Collections.Generic.List<State>();
 
 				for (int stateIndex = 1; stateIndex <= 20000; stateIndex++)
 				{
-					state =
+					State state =
 						new State()
 						{
 							Name =

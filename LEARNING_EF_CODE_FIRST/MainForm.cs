@@ -10,7 +10,7 @@ namespace LEARNING_EF_CODE_FIRST
 		}
 
 		// **********
-		private Models.DatabaseContext MyDatabaseContext { get; set; }
+		protected Models.DatabaseContext MyDatabaseContext { get; set; }
 		// **********
 
 		private void MainForm_Load(object sender, System.EventArgs e)
