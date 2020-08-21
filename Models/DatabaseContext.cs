@@ -23,7 +23,7 @@
 		protected override void OnModelCreating
 			(System.Data.Entity.DbModelBuilder modelBuilder)
 		{
-			base.OnModelCreating(modelBuilder);
+			//base.OnModelCreating(modelBuilder);
 
 			modelBuilder.Configurations.Add(new State.Configuration());
 			modelBuilder.Configurations.Add(new Country.Configuration());
